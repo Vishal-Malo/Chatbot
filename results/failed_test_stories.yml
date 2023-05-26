@@ -1,0 +1,72 @@
+version: "3.1"
+stories:
+- story: interactive_story_2 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: no_location_weather
+  - action: utter_location
+  - intent: ask_temperature  # predicted: ask_temperature: [kolkata](GPE)
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: interactive_story_3 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_temperature  # predicted: ask_temperature: temperature in [dhanbad](GPE)
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_say_feedback
+  - intent: goodbye
+  - action: utter_goodbye
+- story: interactive_story_4 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_temperature  # predicted: ask_temperature: what is the temperature in [Noida](GPE)
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: sad path 1 (.\venv\Lib\site-packages\rasa\cli\initial_project\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy  # predicted: deny: not good
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+- story: sad path 2 (.\venv\Lib\site-packages\rasa\cli\initial_project\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy  # predicted: deny: not good
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+- story: Greet user anytime the user says name (.\tests\test_stories.yml)
+  steps:
+  - intent: tell_name  # predicted: tell_name: my name is [vishal](PERSON)
+  - action: action_greet_name
+- story: interactive_story_1 (.\tests\test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: no_location_weather
+  - action: utter_location
+  - intent: ask_temperature  # predicted: ask_temperature: [bangalore](GPE)
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: deny  # predicted: goodbye: naa
+  - action: utter_say_feedback
+  - intent: goodbye
+  - action: utter_goodbye

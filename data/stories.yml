@@ -1,0 +1,150 @@
+version: "3.1"
+
+stories:
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_iamabot
+
+- story: Greet user anytime the user says name
+  steps:
+  - intent: tell_name
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: action_greet_name
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_greet
+  - intent: no_location_weather
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_location
+  - intent: ask_temperature
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: action_weather
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_say_feedback
+#  - intent: goodbye
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_greet
+  - intent: no_location_weather
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_location
+  - intent: ask_temperature
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: action_weather
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_happy
+#  - intent: goodbye
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps:
+  - intent: greet
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_greet
+  - intent: ask_temperature
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: action_weather
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_say_feedback
+#  - intent: goodbye
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_goodbye
+
+- story: interactive_story_4
+  steps:
+  - intent: greet
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_greet
+  - intent: ask_temperature
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: action_weather
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_happy
+#  - intent: goodbye
+#  - action: action_sentiment_based_user_profiling
+#  - action: action_debugger
+#  - action: utter_goodbye
+- story: interactive_story_5
+  steps:
+  - intent: greet
+  - action: action_sentiment_based_user_profiling
+  - slot_was_set:
+    - sentiment_profile:
+        positive: 0
+        negative: 0
+        neutral: 1
+  - action: action_debugger
+  - slot_was_set:
+    - PERSON: null
+  - slot_was_set:
+    - GPE: null
+  - slot_was_set:
+    - feedback: null
+  - action: utter_greet
+  - intent: ask_temperature
+    entities:
+    - GPE: dhanbad
+  - slot_was_set:
+    - GPE: dhanbad
+  - action: action_sentiment_based_user_profiling
+  - slot_was_set:
+    - sentiment_profile:
+        positive: 0
+        negative: 0
+        neutral: 1
+  - action: action_debugger
+  - slot_was_set:
+    - PERSON: null
+  - slot_was_set:
+    - GPE: dhanbad
+  - slot_was_set:
+    - feedback: null
+  - action: action_weather
+  - slot_was_set:
+    - GPE: null

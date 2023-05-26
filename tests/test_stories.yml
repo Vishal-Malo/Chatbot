@@ -1,0 +1,186 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+
+- story: happy path 2
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      not really
+    intent: deny
+  - action: utter_goodbye
+
+- story: sad path 3
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      very terrible
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: Greet user anytime the user says name
+  steps:
+  - user: |
+      my name is vishal
+    intent: tell_name
+  - action: action_greet_name
+
+- story: interactive_story_1
+  steps:
+  - user: |
+      hey dude
+    intent: greet
+  - action: utter_greet
+  - user: |
+      tell me the weather
+    intent: no_location_weather
+  - action: utter_location
+  - user: |
+      bangalore
+    intent: ask_temperature
+  - action: action_weather
+  - action: utter_did_that_help
+  - user: |
+      naa
+    intent: deny
+  - action: utter_say_feedback
+  - user: |
+      have a nice day
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - user: |
+      hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+      what is the weather
+    intent: no_location_weather
+  - action: utter_location
+  - user: |
+      kolkata
+    intent: ask_temperature
+  - action: action_weather
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
+  - user: |
+      good bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      temperature in dhanbad
+    intent: ask_temperature
+  - action: action_weather
+  - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_say_feedback
+  - user: |
+      bye bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_4
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      what is the temperature in Noida
+    intent: ask_temperature
+  - action: action_weather
+  - action: utter_did_that_help
+  - user: |
+      yeah
+    intent: affirm
+  - action: utter_happy
+  - user: |
+      bye
+    intent: goodbye
+  - action: utter_goodbye

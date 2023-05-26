@@ -1,0 +1,23 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_iamabot
+
+- rule: User thanks the bot
+  steps:
+  - intent: say_thanks
+  - action: action_sentiment_based_user_profiling
+  - action: action_debugger
+  - action: utter_welcome
