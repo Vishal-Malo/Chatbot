@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rasa Chatbot</title>
+</head>
+<body>
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+  <style>
+    .rw-conversation-container .rw-header{background-color:hsl(250, 69%, 61%);}
+    .rw-conversation-container .rw-messages-container .rw-message .rw-client{background-color: hsl(250, 69%, 61%);}
+    .rw-launcher{background-color: hsl(250, 69%, 61%);}
+    .rw-conversation-container .rw-reply{background-color: hsl(250, 69%, 61%); border: 1px solid hsl(250, 69%, 61%);}
+  </style>
+    <script>!(function () {
+        let e = document.createElement("script"),
+          t = document.head || document.getElementsByTagName("head")[0];
+        (e.src =
+          "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
+          // Replace 1.x.x with the version that you want
+          (e.async = !0),
+          (e.onload = () => {
+            window.WebChat.default(
+              {
+                initPayload: '/greet',
+                customData: { language: "en" },
+                socketUrl: "http://localhost:5005",
+                title: "RASA Chatbot",
+                subtitle: "Say Hi to get started",
+                profileAvatar: "./assets/svg/robot.svg",
+                embedded: true,
+                showMessageDate: true,
+                inputTextFieldHint: "What's in your mind?...",
+                autoClearCache: true,
+                // add other props here
+              },
+              null
+            );
+          }),
+          t.insertBefore(e, t.firstChild);
+      })();
+      </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "text": "what is the temperature in dhanbad?",
+    "intent": {
+        "name": "ask_temperature",
+        "confidence": 0.9999922513961792
+    },
+    "entities": [
+        {
+            "entity": "GPE",
+            "start": 27,
+            "end": 34,
+            "confidence_entity": 0.9967436790466309,
+            "value": "dhanbad",
+            "extractor": "DIETClassifier"
+        }
+    ]
+}

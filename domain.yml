@@ -1,0 +1,82 @@
+version: '3.1'
+config:
+  store_entities_as_slots: true
+intents:
+- affirm
+- ask_temperature
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- no_location_weather
+- say_thanks
+- tell_name
+entities:
+- GPE
+- PERSON
+slots:
+  GPE:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: GPE
+  PERSON:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: PERSON
+  feedback:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+  sentiment_profile:
+    type: any
+    mappings:
+    - type: custom
+responses:
+  utter_greet:
+  - text: Hey! How can I help you?
+  utter_iamabot:
+  - text: I am more or less like a human. I can tell you temperature at certain cities.
+  utter_did_that_help:
+  - text: Was that helpful?
+  utter_happy:
+  - text: Great, glad I could help. Feel free to ask me any additional questions.
+  utter_continue:
+  - text: Good, carry on!
+  utter_say_feedback:
+  - text: Sorry to hear that, I'm still under training, meanwhile you can mail your feedback to us.
+  - text: We will be happy to hear from you!
+  utter_goodbye:
+  - text: Goodbye, have nice time.
+  utter_default:
+  - text: Sorry I didn't understand, Could you rephrase it?
+  utter_cheer_up:
+  - text: Oh sorry, join me to ask any questions if I can help you!
+  utter_location:
+  - text: Please tell me the city name?
+  utter_welcome:
+  - text: You are very welcome!
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- action_weather
+- utter_greet
+- action_sentiment_based_user_profiling
+- action_debugger
+- utter_location
+- utter_goodbye
+- utter_did_that_help
+- utter_say_feedback
+- utter_happy
+- action_feedback
+- utter_default
+- utter_cheer_up
+- utter_iamabot
+- utter_continue
+- utter_welcome
+- action_greet_name
